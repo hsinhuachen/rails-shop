@@ -17,7 +17,7 @@ set :branch, 'master'
 
 # Optional settings:
   set :user, 'hsinhua'          # Username in the server to SSH to.
-  set :port, '22'               # SSH port number.
+ # set :port, '22'               # SSH port number.
   set :forward_agent, true     # SSH forward_agent.
 
 # Shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
@@ -57,12 +57,12 @@ task :deploy do
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
-    on :launch do
-      in_path(fetch(:current_path)) do
-        command %{mkdir -p tmp/}
-        command %{touch tmp/restart.txt}
-      end
-    end
+    # on :launch do
+    #   in_path(fetch(:current_path)) do
+    #     command %{mkdir -p tmp/}
+    #     command %{touch tmp/restart.txt}
+    #   end
+    # end
   end
 
   # you can use `run :local` to run tasks on local machine before of after the deploy scripts

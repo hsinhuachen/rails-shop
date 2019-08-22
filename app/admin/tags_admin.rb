@@ -1,7 +1,7 @@
 Trestle.resource(:tags) do
   menu do
     group :recipe do
-      item :tags, label: "食譜標籤", icon: "fa fa-star"
+      item :tags, label: "食譜標籤", icon: "fa fa-tag"
     end
   end
 

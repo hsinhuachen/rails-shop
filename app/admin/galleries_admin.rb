@@ -1,7 +1,7 @@
 Trestle.resource(:galleries) do
   menu do
     group :product do
-      item :galleries, icon: "fa fa-star", label: "商品圖片"
+      item :galleries, icon: "fa fa-image", label: "商品圖片"
     end
   end
 

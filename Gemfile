@@ -49,6 +49,8 @@ gem 'aasm'
 gem 'devise'
 gem 'sqlite3'
 
+gem "nokogiri", ">= 1.10.4"
+
 # group :production do
 #   gem 'pg'
 # end

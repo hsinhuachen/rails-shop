@@ -7,9 +7,13 @@
 //    @import "trestle/custom/my_custom_css";
 //
 
-// body, .app-sidebar-header{
-// 	background: url('../shf_bkg.jpg') left top repeat;
-// }
+.app-sidebar-header{
+ 	background: #FFF;
+ 	.navbar-brand{
+ 		color: #333;
+ 		font-weight: 400;
+ 	}
+}
 
 .col-thumb {
 	width: 220px;

@@ -1,6 +1,6 @@
 Trestle.resource(:homes) do
   menu do
-    item :homes, icon: "fa fa-star"
+    item :homes, icon: "fa fa-home", label: "首頁輪播"
   end
 
   # Customize the table columns shown on the index view.
