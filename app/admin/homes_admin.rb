@@ -34,11 +34,6 @@ Trestle.resource(:homes) do
 
     text_area :desc, label: "圖片描述"
     text_field :sorting, label: "排序"
-
-    row do
-      col(xs: 6) { datetime_field :updated_at }
-      col(xs: 6) { datetime_field :created_at }
-    end
   end
 
   controller do 

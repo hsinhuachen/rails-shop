@@ -18,4 +18,7 @@ class Recipe < ApplicationRecord
 	    }
 	end
 
+	def ingredient(title, quantity, sorting=0)
+        self.ingredients.create("title" => title, "quantity" => quantity, "sorting" => 0)
+	end
 end

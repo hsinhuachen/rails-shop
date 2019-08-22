@@ -30,7 +30,7 @@ Things you may want to cover:
 * rails generate trestle:resource Tag 
 * rails generate trestle:resource Gallery
 * rails generate trestle:auth:install
-* Administrator.create(email: "yha0971", password: "1111", first_name: "hsinhua", last_name: "chen")
+* Administrator.create(email: "admin", password: "1111", first_name: "hsinhua", last_name: "chen")
 
 ## add Model
 * rails g model Category title:string sorting:integer

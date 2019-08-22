@@ -119,7 +119,6 @@ Trestle.configure do |config|
   # end
   #
   # config.form_field :custom, CustomFormField
-
   # == Debugging Options
   #
   # Enable debugging of form errors. Defaults to true in development mode.

@@ -30,4 +30,31 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  admin:
+    homes:
+      titles:
+        index: "首頁輪播"
+        edit: "編輯圖片"
+        new: "新增圖片"
+    products:
+      titles:
+        index: "商品列表"
+        edit: "編輯商品"
+        new: "新增商品"
+    categories:
+      titles: 
+        index: "商品類別"
+        edit: "編輯類別"
+        new: "新增類別"
+    users:
+      titles:
+        index: "會員管理"
+        edit: "編輯會員"
+        new: "新增會員"
+    recipes:
+      titles:
+        index: "食譜管理"
+        edit: "編輯食譜"
+        new: "新增食譜"
+    format:
+      blank: "none"

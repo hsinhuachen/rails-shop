@@ -1,7 +1,7 @@
 Trestle.resource(:users) do
   menu do
     group :member do
-      item :users, label: "會員", icon: "fa fa-user"
+      item :users, label: "會員管理", icon: "fa fa-user"
     end
   end
 

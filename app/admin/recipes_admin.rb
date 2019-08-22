@@ -56,12 +56,25 @@ Trestle.resource(:recipes) do
     end #end tab
 
     tab "ingredient", badge: recipe.ingredients.count, label: "食材" do
+
+      row do
+        col(xs: 4) { concat content_tag(:input,'', type: "text", name: 'ingredients[title]][]', class: "form-control", placeholder: "食材") }
+        col(xs: 4) { concat content_tag(:input,'', type: "text", name: 'ingredients[quantity][]', class: "form-control", placeholder: "數量") }
+        col(xs: 4) { }
+      end
+
+      row do
+        col(xs: 4) { concat content_tag(:input,'', type: "text", name: 'ingredients[title]][]', class: "form-control", placeholder: "食材") }
+        col(xs: 4) { concat content_tag(:input,'', type: "text", name: 'ingredients[quantity][]', class: "form-control", placeholder: "數量") }
+        col(xs: 4) { }
+      end
+
       if recipe.id?
-        concat link_to "新增食材", trestle.new_ingredients_admin_path(:recipe_id => recipe.id), class: "btn btn-primary", data:{ "behavior": "dialog"}
+        # concat link_to "新增食材", trestle.new_ingredients_admin_path(:recipe_id => recipe.id), class: "btn btn-primary", data:{ "behavior": "dialog"}
         
         table IngredientsAdmin.table, collection: recipe.ingredients
       else
-        concat content_tag :p, '儲存食譜後可新增食材', class: "text-danger"
+        # concat content_tag :p, '儲存食譜後可新增食材', class: "text-danger"
       end
       # fields_for :ingredients, title: "食材" do |ingredient|
       #   row do
@@ -78,6 +91,57 @@ Trestle.resource(:recipes) do
   end
 
   controller do 
+    def create
+      self.instance = admin.build_instance(admin.permitted_params(params), params) 
+
+      # logger.info "------------"
+      # # logger.info self.instance.ingredient
+      # logger.info params[:ingredients]["title"]
+      # logger.info "------------"
+      params[:ingredients]["title"].each_with_index do |item, index|
+        instance.ingredients.create("title" => item, "quantity" => params[:ingredients]["quantity"][index])
+      end
+
+      respond_to do |format|  
+        format.html do  
+          flash[:message] = flash_message("create.success", title: "Success!", message: "The %{lowercase_model_name} was successfully created.")  
+          redirect_to_return_location(:create, instance, default: admin.instance_path(instance))  
+        end 
+        format.json { render json: instance, status: :created, location: admin.instance_path(instance) }  
+        format.js 
+      end
+    end
+
+    def update
+      admin.update_instance(instance, admin.permitted_params(params), params) 
+
+      params[:ingredients]["title"].each_with_index do |item, index|
+        if item.blank? 
+          self.instance.ingredient(item,params[:ingredients]["quantity"][index],0)
+        end
+      end
+
+      if admin.save_instance(instance, params)  
+        respond_to do |format|  
+          format.html do  
+            flash[:message] = flash_message("update.success", title: "Success!", message: "The %{lowercase_model_name} was successfully updated.")  
+            redirect_to_return_location(:update, instance, default: admin.instance_path(instance))  
+          end 
+          format.json { render json: instance, status: :ok }  
+          format.js 
+        end 
+      else  
+        respond_to do |format|  
+          format.html do  
+            flash.now[:error] = flash_message("update.failure", title: "Warning!", message: "Please correct the errors below.") 
+            render "show", status: :unprocessable_entity  
+          end 
+          format.json { render json: instance.errors, status: :unprocessable_entity } 
+          format.js 
+        end 
+      end
+    end
+
     def pub_status
       missile = admin.find_instance(params)
       missile.update("publish" => true);
