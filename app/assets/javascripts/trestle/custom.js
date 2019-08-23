@@ -6,3 +6,15 @@
 //
 //  e.g. //= require "trestle/custom/my_custom_js"
 //= require "trestle/imgupload.js"
+
+
+$(document).on('turbolinks:load', function() {
+	$("#arraylist").on('click', '.clickadd', function(event) {
+		event.preventDefault();
+
+		var group = $(this).parents(".row").html();
+		$(this).removeClass('clickadd');
+		
+		$("#arraylist").find(".row:last").after('<div class="row">' + group + '</div>');
+	});
+});

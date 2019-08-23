@@ -8,9 +8,9 @@ Trestle.resource(:ingredients) do
   # Customize the table columns shown on the index view.
   #
   table do
-    column :title, header: "食材"
-    column :quantity, header: "數量"
-    column :sorting, header: "排序"
+    column :title, header: "食材", class: "col-xs-4"
+    column :quantity, header: "數量", class: "col-xs-4"
+    column :sorting, header: "排序", class: "col-xs-4"
     actions
   end
 
@@ -29,6 +29,15 @@ Trestle.resource(:ingredients) do
     end
 
     text_field :sorting
+  end
+
+  controller do 
+    def destroy
+      self.instance.destroy
+      flash[:message] = flash_message("destroy1.success", title: "食材已刪除", message: "The %{lowercase_model_name} was successfully created.")   
+      redirect_to edit_recipes_admin_path(1)
+      # redirect_back fallback_location: root_path
+    end
   end
 
   # By default, all parameters passed to the update and create actions will be

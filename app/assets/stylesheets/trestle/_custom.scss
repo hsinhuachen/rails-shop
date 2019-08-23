@@ -62,7 +62,7 @@ p.help-block{
 }
 
 a[href="/admin/ingredients"]{
-	// display: none;
+	display: none;
 }
 
 .radio{
@@ -169,6 +169,10 @@ a[href="/admin/ingredients"]{
     border-left: $custom-file-border-width solid $custom-file-border-color;
     background: $brand-primary;
   }
+}
+
+#arraylist .row{
+	margin-bottom: 24px;
 }
 
 

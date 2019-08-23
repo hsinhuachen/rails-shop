@@ -56,31 +56,31 @@ Trestle.resource(:recipes) do
     end #end tab
 
     tab "ingredient", badge: recipe.ingredients.count, label: "食材" do
+      concat content_tag(:div, nil, :id => "arraylist"){
+        row do
+          col(xs: 4) { concat content_tag(:input,'', type: "text", name: 'ingredients[title]][]', class: "form-control", placeholder: "食材") }
+          col(xs: 4) { concat content_tag(:input,'', type: "text", name: 'ingredients[quantity][]', class: "form-control", placeholder: "數量") }
+          col(xs: 4) { }
+        end
 
-      row do
-        col(xs: 4) { concat content_tag(:input,'', type: "text", name: 'ingredients[title]][]', class: "form-control", placeholder: "食材") }
-        col(xs: 4) { concat content_tag(:input,'', type: "text", name: 'ingredients[quantity][]', class: "form-control", placeholder: "數量") }
-        col(xs: 4) { }
-      end
-
-      row do
-        col(xs: 4) { concat content_tag(:input,'', type: "text", name: 'ingredients[title]][]', class: "form-control", placeholder: "食材") }
-        col(xs: 4) { concat content_tag(:input,'', type: "text", name: 'ingredients[quantity][]', class: "form-control", placeholder: "數量") }
-        col(xs: 4) { }
-      end
+        row do
+          col(xs: 4) { concat content_tag(:input,'', type: "text", name: 'ingredients[title]][]', class: "form-control clickadd", placeholder: "食材") }
+          col(xs: 4) { concat content_tag(:input,'', type: "text", name: 'ingredients[quantity][]', class: "form-control", placeholder: "數量") }
+          col(xs: 4) { }
+        end
+      }
 
       if recipe.id?
         # concat link_to "新增食材", trestle.new_ingredients_admin_path(:recipe_id => recipe.id), class: "btn btn-primary", data:{ "behavior": "dialog"}
         
         table IngredientsAdmin.table, collection: recipe.ingredients
-      else
-        # concat content_tag :p, '儲存食譜後可新增食材', class: "text-danger"
       end
+
       # fields_for :ingredients, title: "食材" do |ingredient|
       #   row do
-      #     col(xs: 3) { ingredient.text_field :title, label: "食材名稱" }
-      #     col(xs: 3) { ingredient.text_field :quantity, label: "數量" }
-      #     col(xs: 6) { concat content_tag :p, "刪除食材" }
+      #     col(xs: 4) { ingredient.text_field :title, label: false }
+      #     col(xs: 4) { ingredient.text_field :quantity, label: false }
+      #     col(xs: 4) { link_to "刪除食材", "#", class: "btn btn-danger" }
       #   end
       # end
     end #end tab
@@ -94,12 +94,10 @@ Trestle.resource(:recipes) do
     def create
       self.instance = admin.build_instance(admin.permitted_params(params), params) 
 
-      # logger.info "------------"
-      # # logger.info self.instance.ingredient
-      # logger.info params[:ingredients]["title"]
-      # logger.info "------------"
       params[:ingredients]["title"].each_with_index do |item, index|
-        instance.ingredients.create("title" => item, "quantity" => params[:ingredients]["quantity"][index])
+        if !item.empty? 
+          instance.ingredients.create(item,params[:ingredients]["quantity"][index],0)
+        end
       end
 
       respond_to do |format|  
@@ -116,7 +114,7 @@ Trestle.resource(:recipes) do
       admin.update_instance(instance, admin.permitted_params(params), params) 
 
       params[:ingredients]["title"].each_with_index do |item, index|
-        if item.blank? 
+        if !item.empty? 
           self.instance.ingredient(item,params[:ingredients]["quantity"][index],0)
         end
       end
