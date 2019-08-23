@@ -12,6 +12,9 @@ Trestle.resource(:ingredients) do
     column :quantity, header: "數量", class: "col-xs-4"
     column :sorting, header: "排序", class: "col-xs-4"
     actions
+    # column :action do |ing|
+    #     link_to(content_tag(:i, '', class: "fa fa-trash"), hide_ing_ingredients_admin_path(ing.id), method: :put, class: "btn btn-danger has-icon")
+    # end
   end
 
   # Customize the form fields shown on the new/edit views.
@@ -35,8 +38,7 @@ Trestle.resource(:ingredients) do
     def destroy
       self.instance.destroy
       flash[:message] = flash_message("destroy1.success", title: "食材已刪除", message: "The %{lowercase_model_name} was successfully created.")   
-      redirect_to edit_recipes_admin_path(1)
-      # redirect_back fallback_location: root_path
+      redirect_to edit_recipes_admin_path(self.instance.recipe_id)
     end
   end
 

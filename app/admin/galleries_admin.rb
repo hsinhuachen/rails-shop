@@ -18,9 +18,9 @@ Trestle.resource(:galleries) do
   # Customize the form fields shown on the new/edit views.
   #
   form dialog: true do |gallery|
-    form_group :filename, label: "圖片", help: "圖片尺寸 1920x1080px" do
-        raw_file_field :image
-    end
+    # form_group :filename, label: "圖片", help: "圖片尺寸 1920x1080px" do
+    #     raw_file_field :image
+    # end
     text_field :sorting, label: "排序"
   end
 

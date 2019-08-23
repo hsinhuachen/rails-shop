@@ -23,7 +23,7 @@ Trestle.resource(:products) do
       else 
         link_to(status_tag('none', :danger) , admin.path(:pub_latest, id: product.id), method: :post, class: "action-btn")
       end
-          end
+    end
     column :published, align: :center, link: false, header: "發佈" do |product|      
       if product.publish then 
         link_to(status_tag(icon("fa fa-check"), :success) , admin.path(:cancel_status, id: product.id), method: :post, class: "action-btn")
@@ -95,7 +95,7 @@ Trestle.resource(:products) do
       form_group :gallerys, label: false do
 
         concat content_tag(:div, nil, :class => "custom-file"){
-          raw_file_field :filename, :multiple => true, name: "gallerys[filename][]", class: "custom-file-input", id: "customFile"
+          raw_file_field :filename, :multiple => true, name: "gallerys[filename][]", class: "custom-file-input", id: "mutiupload"
           concat content_tag(:label, "Choose file", class: "custom-file-label", for: "customFile")
         }
 
@@ -107,6 +107,8 @@ Trestle.resource(:products) do
             content_tag(:li, item)
           end.join.html_safe
         }
+
+        concat content_tag(:div, "",:id => "galleryList", :class => "galleryList")
 
         table GalleriesAdmin.table, collection: product.gallerys
       end
