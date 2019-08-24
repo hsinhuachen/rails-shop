@@ -1,0 +1,15 @@
+sudo -u hsinhua -H git clone https://github.com/hsinhuachen/rails-shop.git code
+sudo -u hsinhua -H bash -l
+sudo chown hsinhua: /var/www/myap
+
+sudo mkdir -p ~hsinhua/.ssh
+touch $HOME/.ssh/authorized_keys
+sudo sh -c "cat $HOME/.ssh/authorized_keys >> ~hsinhua/.ssh/authorized_keys"
+sudo chown -R hsinhua: ~hsinhua/.ssh
+sudo chmod 700 ~hsinhua/.ssh
+sudo sh -c "chmod 600 ~hsinhua/.ssh/*"
+
+sudo ln -s /etc/nginx/sites-available/rails-shop /etc/nginx/sites-enabled/rails-shop
+
+sudo -H apt-get install nginx-common nginx-full
+sudo nano /etc/apt/sources.list.d/passenger.list

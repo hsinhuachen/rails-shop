@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   	get "/recipes/tag/:id", to: "recipes#index", :as => :tag
   	get "/about", to: "about#index"
 
-	resource  :cart, only: [:show, :destroy] do
+	resource  :cart, only: [:show, :create, :destroy] do
 	  	collection do
 	  		put :add, path: "add/:id"
 	  		put :remove, path: "remove/:id"
@@ -26,8 +26,6 @@ Rails.application.routes.draw do
 		end
 	end
 	resources :recipes, only: [:index, :show]
+	resources :orders, only: [:index, :show, :create]
 
-	# resources :categories
-
-	# end
 end

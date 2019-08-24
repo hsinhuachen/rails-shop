@@ -42,9 +42,11 @@ gem 'carrierwave', '~> 1.0'
 gem 'mini_magick', ">= 4.9.4"
 gem "breadcrumbs_on_rails"
 
+gem "braintree", "~> 2.89.0"
 gem 'aasm'
 gem 'devise'
 gem 'sqlite3'
+gem 'simple_form', '~> 4.0', '>= 4.0.1'
 
 gem "nokogiri", ">= 1.10.4"
 

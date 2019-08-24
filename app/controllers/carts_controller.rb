@@ -57,4 +57,9 @@ class CartsController < ApplicationController
 		session[:cart1111] = nil
 		redirect_to cart_path, notice: '購物車已清空'
 	end
+
+	def checkout
+		@user = current_user
+		@client_token = Braintree::ClientToken.generate
+	end
 end

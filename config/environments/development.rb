@@ -14,7 +14,6 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
@@ -62,3 +61,11 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
+
+Braintree::Configuration.environment = :sandbox
+Braintree::Configuration.logger = Logger.new('log/braintree.log')
+Braintree::Configuration.merchant_id = "xqx67np9jht37mrk"
+Braintree::Configuration.public_key = "tv9djtgn6h3n2hzn"
+Braintree::Configuration.private_key = "135ca96035ebe60c3373b32e400fbd32"
+
+

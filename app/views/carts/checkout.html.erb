@@ -31,9 +31,63 @@
 		<% end %>
 	</div> <!-- /cart-wrap-table -->
   <%= render "carts/cartinfo" %>
-	
+  <%= form_for @user, url: orders_path, :method => :POST do |f| %>
+  <div class="member">
+    <h4>訂購人資訊</h4>
+    <div class="row">
+      <div class="order-col col-md-6">
+        <div class="field">
+          <%= f.label :name, "姓名", class: "col-form-label" %>
+          <div class="col-form-control">
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+        </div>
+      </div> <!-- /order-col -->
+      <div class="order-col col-md-6">
+        <div class="field">
+          <%= f.label :mobile, "聯絡手機 *", class: "col-form-label" %>
+          <div class="col-form-control">
+            <%= f.text_field :mobile, class: "form-control" %>
+          </div>
+        </div>
+      </div> <!-- /order-col -->
+    </div> <!-- /row -->
+    <div class="row">
+      <div class="order-col col-sm-12">
+        <div class="field">
+          <label for="order-info-addr" class="col-form-label">聯絡地址</label>
+          <div class="col-form-control">
+            <div class="account-list-row">
+              <div id="twzipcode" class="row" style="padding-bottom: 20px">
+                <div class="account-list-row col-md-4" data-role="zipcode"
+                   data-value="<%= current_user.code %>" data-name="user[code]"
+                   data-style="form-control"></div>
+                <div class="account-list-row col-md-4" data-role="county"
+                   data-value="<%= current_user.city %>" data-name="user[city]"
+                   data-style="form-control"></div>
+                <div class="account-list-row col-md-4" data-role="district"
+                   data-value="<%= current_user.district %>" data-name="user[district]"
+                   data-style="form-control"></div>
+              </div><!-- twzipcode -->
+            </div>
+            <input type="text" name="user[addr]" class="form-control" id="order-info-addr" value="<%= current_user.addr %>">
+          </div> <!-- /col-form-control -->
+        </div> <!-- /field -->
+      </div> <!-- /order-col -->
+    </div> <!-- /row -->
+  </div> <!-- /member -->
+  <div id="payment-form"></div>
 	<div class="control text-center">
 	    <%= link_to '上一步', cart_path, class: 'btn btn-success' %>
-	    <%= link_to '送出訂單', checkout_cart_path, class: 'btn btn-primary' unless current_cart.empty? %>
-	  </div>
+      <%= f.submit '送出訂單', class: 'btn btn-primary' %>
+	 </div>
+  <% end #end form_for %>
 </div> <!-- /cart-wrap -->
+<script src="https://js.braintreegateway.com/js/braintree-2.32.1.min.js"></script>
+<script>
+var clientToken = "<%= @client_token %>";
+
+braintree.setup(clientToken, "dropin", {
+  container: "payment-form"
+});
+</script>

@@ -8,4 +8,5 @@ class User < ApplicationRecord
   store :birthday, accessors: [ :year, :month, :day ], coder: JSON
   has_many :wishes
   has_many :products, through: :wishes
+  has_one :order, :dependent => :destroy
 end

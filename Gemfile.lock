@@ -59,6 +59,8 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
+    braintree (2.89.0)
+      builder (>= 2.0.0)
     breadcrumbs_on_rails (3.0.1)
     builder (3.2.3)
     byebug (11.0.1)
@@ -237,6 +239,9 @@ GEM
     selenium-webdriver (3.142.3)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
+    simple_form (4.1.0)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -297,6 +302,7 @@ DEPENDENCIES
   aasm
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.3.1)
+  braintree (~> 2.89.0)
   breadcrumbs_on_rails
   byebug
   capybara (>= 2.15)
@@ -316,6 +322,7 @@ DEPENDENCIES
   rspec-rails (~> 3.7, >= 3.7.2)
   sass-rails (~> 5.0)
   selenium-webdriver
+  simple_form (~> 4.0, >= 4.0.1)
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
