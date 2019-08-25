@@ -59,7 +59,11 @@ class CartsController < ApplicationController
 	end
 
 	def checkout
-		@user = current_user
-		@client_token = Braintree::ClientToken.generate
+		if user_signed_in?
+			@user = current_user
+			@client_token = Braintree::ClientToken.generate
+		else
+	  		redirect_to new_user_session_paths		
+		end
 	end
 end

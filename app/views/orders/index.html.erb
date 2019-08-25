@@ -1,0 +1,15 @@
+<div class="member">
+<h2>訂單資訊</h2>
+<div class="row" style="padding-top: 60px">
+  <%= render "shared/member-side" %>
+	<div class="content col-md-9">
+      <div class="table">
+        <% #@orders.each do |order| %>
+        <div class="row">
+          <div class="col-sm-2"><%= @orders.id %></div>
+          <div class="col-sm-4"><%= @orders.state %></div>
+    	 </div>
+        <% #end %>
+      </div> <!-- /table -->
+    </div> <!-- /content -->
+</div> <!-- /member -->
