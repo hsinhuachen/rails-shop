@@ -544,7 +544,33 @@ p.normal{
     white-space: nowrap;
     -ms-touch-action: manipulation;
     touch-action: manipulation;
-    border: 1px solid transparent;
+    &:hover{
+      background: darken(#EFECE3,10);
+    }
+}
+
+.payment-detail{
+    color: #444444;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.89px;
+    line-height: 100%;
+    border: 1px solid #DEDEDE;
+    .row{
+      margin: 0;
+    }
+    .pay-item{
+      padding: 15px;
+    }
+}
+
+.order-header{
+  font-size: 16px;
+  padding-top: 20px;
+}
+
+.bg-gray {
+    background: #EFECE3;
 }
 
 .thumbImg{

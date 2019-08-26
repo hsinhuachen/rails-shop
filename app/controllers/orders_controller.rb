@@ -4,10 +4,15 @@ class OrdersController < ApplicationController
 		@orders = user.orders
 	end
 
+	def show
+		@order = Order.find_by(id: params["id"])
+		@items = @order.order_items
+	end
+
 	def create
 		# user = User.new(user_params)
 		user = current_user
-		order = user.orders.build(state: "pending")
+		order = user.orders.build(state: "pending", pay_status: "none", shipping_status: "none", total_price: current_cart.final_price)
 
 		# 購物車轉訂單
 	    current_cart.items.each do |item|
@@ -21,7 +26,7 @@ class OrdersController < ApplicationController
 	        )
 
 			session[:cart1111] = nil
-    		redirect_to products_path, notice: "Success!!"
+    		redirect_to products_path, notice: "訂單成立, 可以前往會員中心看訂單記錄"
 	    else
     		redirect_to products_path, notice: "ERROR"
 	    end

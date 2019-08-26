@@ -2,7 +2,7 @@
 	<nav class="side-nav">
 		<ul>
 			<li><%= link_to "基本資訊", current_user, class: "#{current_class?(current_user)}" %></li>
-			<li><%= link_to "訂單資訊", orders_path, class: "#{current_class?(orders_path	)}" %></li>
+			<li><%= link_to "訂單查詢", orders_path, class: "#{current_class?(orders_path	)}" %></li>
 			<li><%= link_to "期待清單", user_wish_path(current_user), class: "#{current_class?(user_wish_path(current_user))}" %></li>
 			<li><%= link_to "修改資訊", edit_user_registration_path	, class: "#{current_class?(edit_user_registration_path)}" %></li>
 			<li><%= link_to "登出", destroy_user_session_path, method: :delete, class: "" %></li>

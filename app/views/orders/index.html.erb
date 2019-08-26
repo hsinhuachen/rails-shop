@@ -1,5 +1,5 @@
 <div class="member">
-<h2>訂單資訊</h2>
+<h2>訂單查詢</h2>
 <div class="row" style="padding-top: 60px">
   <%= render "shared/member-side" %>
 	<div class="content col-md-10">
@@ -16,13 +16,15 @@
         </div>
         <% @orders.each do |order| %>
           <div class="row">
-            <div class="td col-md-2"><%= order.id %></div>
-            <div class="td col-md-2"><%= l(order.created_at, :format => :short) %></div>
-            <div class="td col-md-2"><%= order.state %></div>
-            <div class="td col-md-2"></div>
-            <div class="td col-md-2"></div>
-            <div class="td col-md-1"></div>
-            <div class="td col-md-1"><a href="" class="order-detail">訂單明細</a></div>
+            <div class="td col-md-2 order-label" data-label="單價："><%= order.id %></div>
+            <div class="td col-md-2 order-label" data-label="下單日期："><%= l(order.created_at, :format => :short) %></div>
+            <div class="td col-md-2 order-label" data-label="訂單狀態："><%= order.state %></div>
+            <div class="td col-md-2 order-label" data-label="付款狀態："><%= order.pay_status %></div>
+            <div class="td col-md-2 order-label" data-label="配送狀態："><%= order.shipping_status %></div>
+            <div class="td col-md-1 order-label" data-label="總金額：">NT. <%= order.total_price %></div>
+            <div class="td col-md-1">
+              <%= link_to "訂單明細",order_path(order.id), class: "order-detail" %>
+            </div>
       	 </div>
           <% end %>
       </div> <!-- /table -->

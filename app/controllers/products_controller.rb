@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
 	end
 
 	def show
-		product = Product.find(params[:id])
+		product = Product.find_by(id: params[:id],publish: true)
 		add_breadcrumb product.title, product_path(params[:id])
 	end
 
