@@ -2,16 +2,32 @@
 <h2>訂單資訊</h2>
 <div class="row" style="padding-top: 60px">
   <%= render "shared/member-side" %>
-	<div class="content col-md-9">
-      <div class="table">
-        <% if @order.present? %>
-        <% #@orders.each do |order| %>
+	<div class="content col-md-10">
+    <% if @orders.present? %>
+      <div class="table order-list">
         <div class="row">
-          <div class="col-sm-2"><%= @orders.id %></div>
-          <div class="col-sm-4"><%= @orders.state %></div>
-    	 </div>
-        <% #end %>
-        <% end %>
+          <div class="th col-md-2">訂單編號</div>
+          <div class="th col-md-2">下單日期</div>
+          <div class="th col-md-2">訂單狀態</div>
+          <div class="th col-md-2">付款狀態</div>
+          <div class="th col-md-2">配送狀態</div>
+          <div class="th col-md-1">總金額</div>
+          <div class="th col-md-1"></div>
+        </div>
+        <% @orders.each do |order| %>
+          <div class="row">
+            <div class="td col-md-2"><%= order.id %></div>
+            <div class="td col-md-2"><%= l(order.created_at, :format => :short) %></div>
+            <div class="td col-md-2"><%= order.state %></div>
+            <div class="td col-md-2"></div>
+            <div class="td col-md-2"></div>
+            <div class="td col-md-1"></div>
+            <div class="td col-md-1"><a href="" class="order-detail">訂單明細</a></div>
+      	 </div>
+          <% end %>
       </div> <!-- /table -->
+    <% else %>
+    <p>沒有訂單</p>
+    <% end %>
     </div> <!-- /content -->
 </div> <!-- /member -->

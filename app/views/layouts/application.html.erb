@@ -17,7 +17,7 @@
     <%  end %>
     
     <%= render "shared/navbar" %>
-    <%= render "shared/flash" if notice %>
+    <%= render "shared/flash" if notice || alert %>
     <div class="container">
       <ol class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
         <%= render_breadcrumbs :tag => :li, :separator => '<span>/</span>' %>

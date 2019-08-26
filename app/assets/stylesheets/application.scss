@@ -508,6 +508,43 @@ p.normal{
 .table{
   font-size: 18px;
   vertical-align: top;
+  width: 100%;
+}
+
+.order-list{
+  .th, .td{
+    font-size: 16px;
+    letter-spacing: 1px;
+    line-height: 100%;
+    color: #212121;
+    font-weight: normal;
+    padding: 20px 0;
+    border-bottom: 1px solid #DEDEDE;
+    white-space: nowrap;
+  }
+}
+
+.order-detail  {
+    font-size: 16px;
+    width: 100%;
+    height: 46px;
+    line-height: 46px;
+    margin: 0 auto;
+    color: #444444;
+    background: #EFECE3;
+    display: block;
+    padding: 0;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+    font-weight: normal;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    border: 1px solid transparent;
 }
 
 .thumbImg{
@@ -568,6 +605,10 @@ p.normal{
 
 .scale-1 {
     transform: scale(-1);
+}
+
+.side{
+  padding-top: 20px;
 }
 
 #footer{

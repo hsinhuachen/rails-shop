@@ -44,6 +44,7 @@ Things you may want to cover:
 * rails g model Order state:string note:text user:references
 * rails g model OrderItem quantity:integer product:references
 * rails g migration add_order_id_to_order_items order_id:integer
+* rails g migration add_column_to_order
 
 ## carrierwave
 * rails generate uploader Image

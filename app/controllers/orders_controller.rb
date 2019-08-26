@@ -1,13 +1,13 @@
 class OrdersController < ApplicationController
 	def index
 		user = current_user
-		@orders = user.order
+		@orders = user.orders
 	end
 
 	def create
 		# user = User.new(user_params)
 		user = current_user
-		order = user.build_orders(state: "pending")
+		order = user.orders.build(state: "pending")
 
 		# 購物車轉訂單
 	    current_cart.items.each do |item|
@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
 	          payment_method_nonce: params[:payment_method_nonce]
 	        )
 
-			session[:cart111] = nil
+			session[:cart1111] = nil
     		redirect_to products_path, notice: "Success!!"
 	    else
     		redirect_to products_path, notice: "ERROR"
