@@ -63,7 +63,7 @@ class CartsController < ApplicationController
 			@user = current_user
 			@client_token = Braintree::ClientToken.generate
 		else
-	  		redirect_to new_user_session_paths		
+	  		redirect_to new_user_session_path
 		end
 	end
 end

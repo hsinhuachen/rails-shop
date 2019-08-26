@@ -47,7 +47,6 @@ gem 'aasm'
 gem 'devise'
 gem 'sqlite3'
 gem 'simple_form', '~> 4.0', '>= 4.0.1'
-
 gem "nokogiri", ">= 1.10.4"
 
 # group :production do
