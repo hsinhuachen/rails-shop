@@ -9,7 +9,7 @@
     </div>
     <div class="payment-detail shopping-detail">
       <div class="order-table-head hidden-xs hidden-sm">
-        <div class="row">
+        <div class="row m0">
           <div class="col-sm-6 bg-gray pay-item">商品名稱</div>
           <div class="col-sm-2 bg-gray text-center pay-item">單價</div>
           <div class="col-sm-2 bg-gray text-center pay-item">數量</div>
@@ -17,7 +17,7 @@
         </div> <!-- /row -->
       </div>
       <% @items.each do |item| %>
-        <div class="row">
+        <div class="row m0 bline">
           <div class="col-md-6 pay-item pay-title"><%=item.get_product_info(item.product_id).title %></div>
           <div class="col-sm-2 text-center pay-item order-label" data-label="單價：">NT. <%=item.get_product_info(item.product_id).price %></div>
           <div class="col-sm-2 text-center pay-item order-label" data-label="數量："><%= item.quantity %></div>
@@ -34,7 +34,7 @@
           <div class="cart-sum">
             <div class="row">
                 <div class="col-6 text-right cart-title">商品總計</div>
-                <div class="col-6 text-right">NT$ <%= current_cart.total_price %></div>
+                <div class="col-6 text-right">NT$ <%= @order.product_price %></div>
               </div>
               <div class="row">
                 <div class="col-6 text-right cart-title">折扣金額</div>
@@ -46,7 +46,7 @@
               </div>
               <div class="row">
                 <div class="col-6 text-right cart-title">運費</div>
-                <div class="col-6 text-right"><span class="text-danger">NT$ 0</span></div>
+                <div class="col-6 text-right"><span class="text-danger">NT$ <%= @order.shipping %></span></div>
               </div>
             </div> <!-- /cart-sum -->
         </div> <!-- /col-md-6 -->
@@ -54,18 +54,99 @@
     </div> <!-- /cart-collaterals -->
     <hr class="bottomLine visible-sm visible-xs">
     <div class="cart-end">
-        <div class="row">
-          <div class="col-sm-7 hidden-sm hidden-xs"></div>
-          <div class="col-sm-5">
-            <div class="cart-sum">
-               <div class="row">
-                 <div class="col-6 text-right cart-title"><strong>商品總金額</strong></div>
-                 <div class="col-6 text-right"><strong>NT$ <%= @order.total_price %></strong></div>
-               </div> <!-- /row -->
-            </div> <!-- /cart-sum -->
-          </div> <!-- /col-sm-6 -->
-        </div> <!-- /row -->
-      </div> <!-- /cart-end -->
+      <div class="row">
+        <div class="col-sm-7 hidden-sm hidden-xs"></div>
+        <div class="col-sm-5">
+          <div class="cart-sum">
+             <div class="row">
+               <div class="col-6 text-right cart-title"><strong>商品總金額</strong></div>
+               <div class="col-6 text-right"><strong>NT$ <%= @order.total_price %></strong></div>
+             </div> <!-- /row -->
+          </div> <!-- /cart-sum -->
+        </div> <!-- /col-sm-6 -->
+      </div> <!-- /row -->
+    </div> <!-- /cart-end -->
 
+    <div class="order-info">
+      <h5 class="order-info-title">收貨人資訊</h5>
+      <div class="pt20">
+        <div class="payment-detail">
+          <div class="row m0">
+            <div class="col-sm-12 col-md-6">
+              <div class="row m-flex bline">
+                <div class="pay-col-label pay-item bg-gray rline">
+                  收貨姓名
+                </div>
+                <div class="pay-col-info pay-item">
+                  <%= @order.name %>
+                </div>
+              </div> <!-- /row -->
+            </div> <!-- /col-sm-12 col-md-6 -->
+            <div class="col-sm-12 col-md-6">
+              <div class="row m-flex bline">
+                <div class="pay-col-label pay-item bg-gray rline">
+                  電子信箱
+                </div>
+                <div class="pay-col-info pay-item">
+                  <%= current_user.email %>
+                </div>
+              </div> <!-- /row -->                   
+            </div> <!-- /col-sm-12 col-md-6 -->
+          </div> <!-- /row -->
+          <div class="row m0">
+            <div class="col-sm-12 col-md-6 bline">
+              <div class="row m-flex">
+                <div class="pay-col-label pay-item bg-gray rline">
+                  聯絡手機
+                </div>
+                <div class="pay-col-info pay-item">
+                  <%= @order.mobile %>
+                </div>
+              </div> <!-- /row -->
+            </div> <!-- /col-sm-12 col-md-6 -->
+            <div class="col-sm-12 col-md-6 bline">
+              <div class="row m-flex">
+                <div class="pay-col-label pay-item bg-gray rline">
+                  聯絡電話
+                </div>
+                <div class="pay-col-info pay-item">
+                  <%= current_user.tel %>
+                </div>
+              </div> <!-- /row -->
+            </div> <!-- /col-sm-12 col-md-6 -->
+          </div> <!-- /row -->
+          <div class="row m0">
+            <div class="col-sm-12 col-md-6 bline">
+              <div class="row m-flex">
+                <div class="pay-col-label pay-item bg-gray rline">宅配時間</div>
+                <div class="pay-col-info pay-item">不指定時間</div>
+              </div> <!-- /row -->
+            </div> <!-- /col-sm-12 col-md-6 -->
+            <div class="col-sm-12 col-md-6 bline">
+              <div class="row m-flex">
+                <div class="pay-col-label pay-item bg-gray rline">配送日期</div>
+                <div class="pay-col-info pay-item"></div>
+              </div> <!-- /row -->
+            </div> <!-- /col-sm-12 col-md-6 -->
+          </div> <!-- /row -->
+          <div class="row m0 bline">
+            <div class="pay-col-label pay-item bg-gray rline noline-md">收貨地址</div>
+            <div class="pay-col-info pay-item">
+              <%= "#{@order.code} #{@order.city}#{@order.district}#{@order.addr}" %>
+            </div>
+          </div> <!-- /row -->
+          <div class="row m0">
+            <div class="pay-col-label pay-item bg-gray rline noline-md">訂單備註</div>
+            <div class="pay-col-info pay-item">
+              <% if @order.note.nil? %>
+                *
+              <% else %>
+                <%= @order.note %>
+              <% end %>
+            </div>
+          </div> <!-- /row -->
+        </div> <!-- /order-table -->
+      </div> <!-- /pt20 -->
+    </div> <!-- /order-info -->
   </div> <!-- /content -->
 </div> <!-- /member -->

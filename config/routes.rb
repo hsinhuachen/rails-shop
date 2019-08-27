@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 	  		put :increase, path: "increase/:id"
 	  		put :reduce, path: "reduce/:id"
 	  		get :checkout
+	  		get :success
 	  	end
 	end
 

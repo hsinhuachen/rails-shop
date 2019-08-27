@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
   has_many :order_items
+  store :contact, accessors: [ :name, :mobile, :code, :city, :district, :addr ], coder: JSON
 
   include AASM
 
@@ -28,4 +29,20 @@ class Order < ApplicationRecord
         transitions from: [:paid, :returned], to: :refunded
       end
 	end
+
+  def substr(str)
+    if str.present?
+      replace = "*"
+      last = replace
+      len = str.length - 3
+
+      for i in 1..len do
+        last += replace
+      end
+
+      newstr = str[1..1] + last
+
+      newstr.prepend replace
+    end
+  end
 end

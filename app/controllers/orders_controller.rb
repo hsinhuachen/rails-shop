@@ -10,9 +10,8 @@ class OrdersController < ApplicationController
 	end
 
 	def create
-		# user = User.new(user_params)
 		user = current_user
-		order = user.orders.build(state: "pending", pay_status: "none", shipping_status: "none", total_price: current_cart.final_price)
+		order = user.orders.build(state: "pending", pay_status: "none", shipping_status: "none", total_price: current_cart.final_price, product_price: current_cart.total_price, shipping: current_cart.shipping, name: user_params[:name], mobile: user_params[:mobile], code: user_params[:code], city: user_params[:city], district: user_params[:district], addr: user_params[:addr])
 
 		# 購物車轉訂單
 	    current_cart.items.each do |item|
@@ -26,7 +25,7 @@ class OrdersController < ApplicationController
 	        )
 
 			session[:cart1111] = nil
-    		redirect_to products_path, notice: "訂單成立, 可以前往會員中心看訂單記錄"
+    		redirect_to success_cart_path
 	    else
     		redirect_to products_path, notice: "ERROR"
 	    end
@@ -34,6 +33,6 @@ class OrdersController < ApplicationController
 
 	private
 	def user_params
-		params.require(:user).permit(:name, :tel, :address)
+		params.require(:user).permit(:name, :mobile, :code, :city, :district, :addr)
 	end
 end

@@ -9,4 +9,6 @@ class OrderItem < ApplicationRecord
   def get_product_total(price,quantity)
   	price * quantity
   end
+
+  
 end

@@ -66,4 +66,13 @@ class CartsController < ApplicationController
 	  		redirect_to new_user_session_path
 		end
 	end
+
+	def success
+		if user_signed_in?
+			@order = current_user.orders.last
+			@items = @order.order_items
+		else
+	  		redirect_to new_user_session_path
+		end
+	end
 end
