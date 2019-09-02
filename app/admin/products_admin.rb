@@ -88,7 +88,7 @@ Trestle.resource(:products) do
     end # end tab
     
     tab "report", label: "商品情報" do
-      editor     :report, label: "商品情報", height: 600
+      editor     :report, :rows => 40, :cols => 120
     end # end tab
 
     tab "Gallery", label: "Gallery" do

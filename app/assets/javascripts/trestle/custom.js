@@ -17,4 +17,5 @@ $(document).on('turbolinks:load', function() {
 		
 		$("#arraylist").find(".row:last").after('<div class="row">' + group + '</div>');
 	});
+
 });

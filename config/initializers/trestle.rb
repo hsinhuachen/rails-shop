@@ -4,6 +4,13 @@ Trestle.configure do |config|
   # Set the page title shown in the main header within the admin.
   #
   config.site_title = "Shop"
+
+  config.tinymce.default.configure do |c|
+    c.toolbar = [
+      "styleselect | fontselect fontsizeselect | bold italic underline strikethrough | hr | alignleft aligncenter alignright alignjustify",
+      "bullist numlist | indent outdent | undo redo | link unlink | image media charmap table | code"
+    ]
+  end
   # Specify a custom image to be used in place of the site title for mobile and
   # expanded/desktop navigation. These images should be placed within your
   # asset paths, e.g. app/assets/images.
