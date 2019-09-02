@@ -2,32 +2,33 @@
 <h2>訂單查詢</h2>
 <div class="row" style="padding-top: 60px">
   <%= render "shared/member-side" %>
-	<div class="content col-md-10">
+	<div class="content col-lg-10">
     <% if @orders.present? %>
-      <div class="table order-list">
-        <div class="row">
-          <div class="th col-md-2">訂單編號</div>
-          <div class="th col-md-2">下單日期</div>
-          <div class="th col-md-2">訂單狀態</div>
-          <div class="th col-md-2">付款狀態</div>
-          <div class="th col-md-2">配送狀態</div>
-          <div class="th col-md-1">總金額</div>
-          <div class="th col-md-1"></div>
-        </div>
-        <% @orders.each do |order| %>
-          <div class="row">
-            <div class="td col-md-2 order-label" data-label="單價："><%= order.id %></div>
-            <div class="td col-md-2 order-label" data-label="下單日期："><%= l(order.created_at, :format => :short) %></div>
-            <div class="td col-md-2 order-label" data-label="訂單狀態："><%= order.state %></div>
-            <div class="td col-md-2 order-label" data-label="付款狀態："><%= order.pay_status %></div>
-            <div class="td col-md-2 order-label" data-label="配送狀態："><%= order.shipping_status %></div>
-            <div class="td col-md-1 order-label" data-label="總金額：">NT. <%= order.total_price %></div>
-            <div class="td col-md-1">
-              <%= link_to "訂單明細",order_path(order.id), class: "order-detail" %>
-            </div>
-      	 </div>
-          <% end %>
-      </div> <!-- /table -->
+      <div class="order-wrap-table mt0-md">
+        <div class="order-list-head order-list-row">
+          <div class="order-id order-item">訂單編號</div>
+          <div class="order-date order-item">下單日期</div>
+          <div class="order-status order-item">訂單狀態</div>
+          <div class="order-pay-status order-item">付款狀態</div>
+          <div class="order-delivery order-item">配送狀態</div>
+          <div class="order-total order-item">總金額</div>
+          <div class="order-detail order-item"></div>
+        </div> <!-- /order-list-head -->
+
+      <% @orders.each do |order| %>
+        <div class="order-list-row">
+          <div class="order-id order-item order-label" data-label="單價："><%= order.id %></div>
+          <div class="order-date order-item order-label" data-label="下單日期："><%= l(order.created_at, :format => :short) %></div>
+          <div class="order-status order-item order-label" data-label="訂單狀態："><%= order.state %></div>
+          <div class="order-pay-status order-item order-label" data-label="付款狀態："><%= order.pay_status %></div>
+          <div class="order-delivery order-item order-label" data-label="配送狀態："><%= order.shipping_status %></div>
+          <div class="order-total order-item order-label" data-label="總金額：">NT. <%= order.total_price %></div>
+          <div class="order-detail order-item">
+            <%= link_to "訂單明細",user_order_path(current_user,order), class: "" %>
+          </div>
+    	  </div>
+      <% end %>
+      </div> <!-- /order-wrap-table -->
     <% else %>
     <p>沒有訂單</p>
     <% end %>

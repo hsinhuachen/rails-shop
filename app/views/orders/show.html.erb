@@ -2,7 +2,7 @@
 <h2>訂單明細</h2>
 <div class="row" style="padding-top: 60px">
   <%= render "shared/member-side" %>
-	<div class="content col-md-10">
+	<div class="content col-lg-10">
     <div class="order-header">
       <h3 class="order-info-title">訂單編號：<%= params["id"] %></h3>
       <p class="font16 pt10">下單時間：<%= @order.created_at %></p>
@@ -10,27 +10,27 @@
     <div class="payment-detail shopping-detail">
       <div class="order-table-head hidden-xs hidden-sm">
         <div class="row m0">
-          <div class="col-sm-6 bg-gray pay-item">商品名稱</div>
-          <div class="col-sm-2 bg-gray text-center pay-item">單價</div>
-          <div class="col-sm-2 bg-gray text-center pay-item">數量</div>
+          <div class="col-lg-6 bg-gray pay-item">商品名稱</div>
+          <div class="col-lg-2 bg-gray text-center pay-item">單價</div>
+          <div class="col-lg-2 bg-gray text-center pay-item">數量</div>
           <div class="col-sm-2 bg-gray text-center pay-item">小計</div>
         </div> <!-- /row -->
       </div>
       <% @items.each do |item| %>
         <div class="row m0 bline">
-          <div class="col-md-6 pay-item pay-title"><%=item.get_product_info(item.product_id).title %></div>
-          <div class="col-sm-2 text-center pay-item order-label" data-label="單價：">NT. <%=item.get_product_info(item.product_id).price %></div>
-          <div class="col-sm-2 text-center pay-item order-label" data-label="數量："><%= item.quantity %></div>
-          <div class="col-sm-2 text-center pay-item order-label" data-label="小計：">NT. <%=item.get_product_total(item.get_product_info(item.product_id).price,item.quantity) %></div>
+          <div class="col-lg-6 pay-item pay-title"><%=item.get_product_info(item.product_id).title %></div>
+          <div class="col-lg-2 text-center pay-item order-label" data-label="單價：">NT. <%=item.get_product_info(item.product_id).price %></div>
+          <div class="col-lg-2 text-center pay-item order-label" data-label="數量："><%= item.quantity %></div>
+          <div class="col-lg-2 text-center pay-item order-label" data-label="小計：">NT. <%=item.get_product_total(item.get_product_info(item.product_id).price,item.quantity) %></div>
         </div>
       <% end %>
     </div> <!-- /payment -->
     <div class="cart-collaterals bottomLine" style="padding-top: 20px">
       <div class="row">
-        <div class="cart-shipping-info col-sm-7">
+        <div class="cart-shipping-info col-md-7">
           
         </div> <!-- /col-md-6 -->
-        <div class="col-sm-5">
+        <div class="col-md-5">
           <div class="cart-sum">
             <div class="row">
                 <div class="col-6 text-right cart-title">商品總計</div>
@@ -55,8 +55,8 @@
     <hr class="bottomLine visible-sm visible-xs">
     <div class="cart-end">
       <div class="row">
-        <div class="col-sm-7 hidden-sm hidden-xs"></div>
-        <div class="col-sm-5">
+        <div class="col-md-7 hidden-sm hidden-xs"></div>
+        <div class="col-md-5">
           <div class="cart-sum">
              <div class="row">
                <div class="col-6 text-right cart-title"><strong>商品總金額</strong></div>

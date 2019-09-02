@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
 	    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :tel, :mobile, :gender, :code, :city, :district, :addr, :year, :month, :day])
 	end
 
+	# def after_sign_in_path_for(resource)
+	# 	root_path
+	# end
+
 	private
 	def init_cart
 		@cart = Cart.from_hash(session[:cart1111])

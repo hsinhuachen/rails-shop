@@ -37,7 +37,7 @@ Trestle.resource(:ingredients) do
   controller do 
     def destroy
       self.instance.destroy
-      flash[:message] = flash_message("destroy1.success", title: "食材已刪除", message: "The %{lowercase_model_name} was successfully created.")   
+      flash[:message] = flash_message("destroy.success", title: "食材已刪除", message: "The %{lowercase_model_name} was successfully created.")   
       redirect_to edit_recipes_admin_path(self.instance.recipe_id)
     end
   end

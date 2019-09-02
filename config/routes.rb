@@ -25,8 +25,7 @@ Rails.application.routes.draw do
 	  			put :remove, path: "remove/:id"
 			end
 		end
+		resources :orders, only: [:index, :show, :create]
 	end
 	resources :recipes, only: [:index, :show]
-	resources :orders, only: [:index, :show, :create]
-
 end

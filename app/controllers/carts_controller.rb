@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
   	add_breadcrumb "購物車", :cart_path
+  	before_action :authenticate_user!, only: [:checkout, :success]
 
 	def show
 		@carts = current_cart.items
@@ -59,20 +60,12 @@ class CartsController < ApplicationController
 	end
 
 	def checkout
-		if user_signed_in?
-			@user = current_user
-			@client_token = Braintree::ClientToken.generate
-		else
-	  		redirect_to new_user_session_path
-		end
+		@user = current_user
+		@client_token = Braintree::ClientToken.generate
 	end
 
 	def success
-		if user_signed_in?
-			@order = current_user.orders.last
-			@items = @order.order_items
-		else
-	  		redirect_to new_user_session_path
-		end
+		@order = current_user.orders.last
+		@items = @order.order_items
 	end
 end

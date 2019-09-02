@@ -279,6 +279,18 @@ p.normal{
 
 .shop-list-options{
 	padding-top: 30px;
+  .btn{
+    margin-left: -15px;
+  }
+}
+
+@media (max-width: 767px) {
+  .shop-list-options{
+    .btn{
+      margin-top: 20px;
+      margin-left: 0px;
+    }
+  }
 }
 
 .shop-list-option{
@@ -371,6 +383,120 @@ p.normal{
   .order-col:nth-child(2){
     padding-left: 20px;
   } 
+}
+
+$orderPaddingRight: 16px;
+.order-wrap-table{
+  width: 100%;
+  display: table;
+  .order-list-row{
+    display: table-row;
+  }
+  .order-id{
+    width: 156px;
+    padding-right: $orderPaddingRight;
+  }
+  .order-date{
+    width: 146px;
+    padding-right: $orderPaddingRight;
+  }
+  .order-status{
+    width: 116px;
+    padding-right: $orderPaddingRight;
+  }
+  .order-pay-status{
+    width: 116px;
+    padding-right: $orderPaddingRight;
+  }
+  .order-delivery{
+    width: 116px;
+    padding-right: $orderPaddingRight;
+  }
+  .order-total{
+    // width: calc(100% - 322px - 348px - 140px);
+    padding-right: 30px;
+  }
+  .order-detail{
+    width: 140px;
+    .btn{
+      font-size: 16px;
+      width: 100px;
+      height: 46px;
+      line-height: 46px;
+      margin: 0 auto;
+    }
+  }
+  .discount-money{
+    width: 220px;
+  }
+  .discount-date{
+    width: 270px;
+  }
+  .order-item{
+    color: #212121;
+    font-size: 16px;
+    letter-spacing: 1px;
+    line-height: 100%;
+    border-bottom: 1px solid #DEDEDE;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    white-space: nowrap;
+    display: table-cell;
+  }
+  .order-list-head .order-item{
+    color: #212121;
+  }
+}
+
+@media (max-width: 991px) {
+  .order-wrap-table{
+    .order-list-head{
+      display: none !important;
+    }
+    .order-list-row{
+      padding-top: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #DEDEDE;
+      display: block;
+    }
+    .order-item{
+      width: 100%;
+      padding-top: 0;
+      padding-right: 0 !important;
+      padding-bottom: 15px;
+      justify-content: space-between;
+      border: none;
+      display: flex;
+    }
+  }
+
+  .order-label:before {
+    color: #212121;
+    font-size: 16px;
+    min-width: 100px;
+    content: attr(data-label);
+    text-align: left;
+    display: inline-block;
+  }
+
+  .payment-detail {
+    .row{
+      display: block;
+    }
+    .pay-item{
+      width: 100%;
+      display: block;
+      text-align: left !important;
+    }
+  }
+
+  .order-table-head{
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  
 }
 
 .radio{
@@ -524,7 +650,7 @@ p.normal{
   }
 }
 
-.order-detail  {
+.order-detail a {
     font-size: 16px;
     width: 100%;
     height: 46px;
@@ -647,6 +773,13 @@ p.normal{
 
 .order-info{
   padding-top: 60px;
+}
+
+@media (max-width: 991px){
+  .content{
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 #footer{

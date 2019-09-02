@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
 
-gem 'trestle'
+gem 'trestle', "~> 0.8.12"
 gem 'trestle-tinymce', '~> 0.1.3'
 gem 'trestle-auth'
 
