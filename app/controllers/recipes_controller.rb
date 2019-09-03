@@ -14,6 +14,11 @@ class RecipesController < ApplicationController
 
 	def show
 		@post = Recipe.find(params[:id])
+		
+		if @post.publish == false
+			redirect_to recipes_path, notice: '食譜未發佈'
+		end
+
 		add_breadcrumb @post.title, recipe_path(params[:id])
 	end
 end

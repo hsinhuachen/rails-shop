@@ -13,7 +13,12 @@ class ProductsController < ApplicationController
 	end
 
 	def show
-		product = Product.find_by(id: params[:id],publish: true)
+		product = Product.find_by(id: params[:id])
+
+		if product.publish == false
+			redirect_to products_path, notice: '商品未發佈'
+		end
+
 		add_breadcrumb product.title, product_path(params[:id])
 	end
 

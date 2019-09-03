@@ -82,6 +82,11 @@ p.normal{
   line-height: 100%;
 }
 
+.banner img{
+  margin: 0 auto;
+  display: block;
+}
+
 #header{
   &.fixed{
     position: fixed;
