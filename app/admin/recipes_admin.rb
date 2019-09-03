@@ -94,19 +94,30 @@ Trestle.resource(:recipes) do
     def create
       self.instance = admin.build_instance(admin.permitted_params(params), params) 
 
-      params[:ingredients]["title"].each_with_index do |item, index|
-        if !item.empty? 
-          instance.ingredients.create(item,params[:ingredients]["quantity"][index],0)
+      if admin.save_instance(instance, params) 
+        params[:ingredients]["title"].each_with_index do |item, index|
+          if !item.empty? 
+            instance.ingredients.create(item,params[:ingredients]["quantity"][index],0)
+          end
         end
-      end
 
-      respond_to do |format|  
-        format.html do  
-          flash[:message] = flash_message("create.success", title: "Success!", message: "The %{lowercase_model_name} was successfully created.")  
-          redirect_to_return_location(:create, instance, default: admin.instance_path(instance))  
+        respond_to do |format|  
+          format.html do  
+            flash[:message] = flash_message("create.success", title: "Success!", message: "The %{lowercase_model_name} was successfully created.")  
+            redirect_to_return_location(:create, instance, default: admin.instance_path(instance))  
+          end 
+          format.json { render json: instance, status: :created, location: admin.instance_path(instance) }  
+          format.js 
+        end
+      else
+        respond_to do |format|  
+          format.html do  
+            flash.now[:error] = flash_message("create.failure", title: "Warning!", message: "Please correct the errors below.") 
+            render "new", status: :unprocessable_entity 
+          end 
+          format.json { render json: instance.errors, status: :unprocessable_entity } 
+          format.js 
         end 
-        format.json { render json: instance, status: :created, location: admin.instance_path(instance) }  
-        format.js 
       end
     end
 
