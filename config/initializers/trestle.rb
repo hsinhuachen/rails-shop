@@ -77,6 +77,8 @@ Trestle.configure do |config|
   #
   # config.helper :all
 
+  config.helpers = [CustomTrestleHelper]
+
   # Register callbacks to run before, after or around all Trestle actions.
   #
   # config.before_action do |controller|

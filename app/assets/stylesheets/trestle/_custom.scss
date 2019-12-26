@@ -61,7 +61,7 @@ p.help-block{
 	display:list-item;
 }
 
-a[href="/admin/ingredients"]{
+a[href="/admin/ingredients"], a[href="/admin/order_items"]{
 	display: none;
 }
 

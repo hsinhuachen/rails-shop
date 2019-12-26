@@ -44,6 +44,10 @@ Trestle.resource(:orders) do
       col(xs: 6){ text_field :addr, label: "住址" }
     end
 
+    concat(order_helper({state: 'default',heading: '訂單資訊'}) do
+      table OrderItemsAdmin.table, collection: order.order_items
+    end)
+
     sidebar do
       concat content_tag(:h3, "訂單總計")
       row do
