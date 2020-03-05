@@ -46,7 +46,7 @@ gem "braintree", "~> 2.89.0"
 gem 'aasm'
 gem 'devise'
 gem 'sqlite3'
-gem 'simple_form', '~> 4.0', '>= 4.0.1'
+gem "simple_form", ">= 5.0.0"
 gem "nokogiri", ">= 1.10.4"
 
 # group :production do

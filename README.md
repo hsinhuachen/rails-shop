@@ -14,11 +14,13 @@
 * braintree: 金流串接 (測試卡號：4111-1111-1111-1111 )
 
 ## 後台登入
-http://54.92.23.92/admin/ [http://54.92.23.92/admin/]
+[http://54.92.23.92/admin/] (http://54.92.23.92/admin/)
+
 帳號: admin
+
 密碼: 1111
 
 ## 會員登入
-http://54.92.23.92/users/sign_in [http://54.92.23.92/users/sign_in]
 信箱: yha0971@gmail.com
+
 密碼: 111111
