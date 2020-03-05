@@ -31,7 +31,7 @@
 		<% end %>
 	</div> <!-- /cart-wrap-table -->
   <%= render "carts/cartinfo" %>
-  <%= form_for @user, url: orders_path, :method => :POST do |f| %>
+  <%= form_for @user, url: user_orders_path(@user), :method => :POST do |f| %>
   <div class="member">
     <h4>訂購人資訊</h4>
     <div class="row">
