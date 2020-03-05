@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Cart, type: :model do
 	describe "購物車基本功能" do
-		it "可以把商品丟到到購物車裡，然後購物車裡就有東西了" do
+		it "可以把商品丟到到購物車裡" do
 			cart = Cart.new
 			cart.add_item 1
 
@@ -70,7 +70,7 @@ RSpec.describe Cart, type: :model do
 			expect(cart.items.first.quantity).to be 2
 		end
 		
-		it "特別活動可能可搭配折扣（例如聖誕節的時候全面打 9 折，或是滿額滿千送百）" do
+		it "特別活動可能可搭配折扣" do
 
 		end 
 	end
